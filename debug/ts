@@ -1,0 +1,15 @@
+
+[1mFrom:[0m /home/lit_users/workspace/views/index.erb @ line 38 :
+
+    [1;34m33[0m:             </div>
+    [1;34m34[0m:           </div>
+    [1;34m35[0m:         </div>
+    [1;34m36[0m:         <% p = 1 %>
+    [1;34m37[0m:         <% binding.pry %>
+ => [1;34m38[0m:         <% @posts.each do |post| %>
+    [1;34m39[0m:           <div class="row">
+    [1;34m40[0m:             <div class="panel panel-warning">
+    [1;34m41[0m:               <div class="panel-heading">
+    [1;34m42[0m:                 <h3><%= post.title %> [最後から<%= q %>番目の投稿]</h3>
+    [1;34m43[0m:               </div>
+

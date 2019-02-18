@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<title>Express</title>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js">
+	</script>
+
+	<link rel="shortcut icon" href="favicon.ico">
+
+</head>
+<body>
+<table>
+	<% @stations.each do |station| %>
+		<tr class="station">
+			<td class="line"><%= station["line"] %></td>
+			<td class="name"><%= station["name"] %></td>
+		</tr>
+	<% end %>
+</table>
+
+<div id="detail">
+	<h2>次の駅</h2>
+	<div class="next"></div>
+</div>
+
+<script>
+window.onload = function() {
+	$(".station").click(function(){
+		var line = $(".line",this).text();
+		var name = $(".name",this).text();
+
+		$.ajax("/api/station", {
+			type: "GET",
+			data: {"line": line, "name": name},
+			datatype: 'json'
+		})
+		.done(function(json){
+			$("#detail .next").text(json["next"])
+		});
+
+		console.log(line+ " " +name);
+});
+}
+</script>
+</body>
+</html>
